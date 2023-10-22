@@ -15,12 +15,12 @@ import java.util.Map;
 
 public class GuiBuilder {
 
-    public static Inventory fromFile(final String file, final String inventoryName) {
+    public static Form fromFile(final String file, final String inventoryName) {
         final File f = new File(file);
         final FileConfiguration inventoryData = YamlConfiguration.loadConfiguration(f);
         final ConfigurationSection section = inventoryData.getConfigurationSection(inventoryName);
         System.out.print(section);
-        return fromNode(section, "Form").toInventory();
+        return (Form) fromNode(section, "Form");
     }
 
     private static Widget fromNode(final ConfigurationSection configuration, final String type) {
